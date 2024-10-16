@@ -8,6 +8,9 @@ const model = require("./modules/api");
 const app = express();
 const port = process.env.PORT || 8000;
 
+// use static files from modules folder
+app.use('/modules', express.static(path.join(__dirname, 'modules')));
+
 // app config
 app.set("view engine", "pug");
 

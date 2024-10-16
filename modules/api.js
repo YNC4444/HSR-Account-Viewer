@@ -1,6 +1,7 @@
 // could have used node-fetch, but this requires me to change all require statements to import
 // got is another option, but doesn't work in the browser
 const axios = require('axios');
+// delete unused declarations?
 const { StarRail, LightCone, LightConeData } = require("starrail.js");
 
 // function related to mihomo API requests

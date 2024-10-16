@@ -39,12 +39,13 @@ block layout-content
   else
     h2.text-center Enter your UID to get started!
     .d-flex.justify-content-center.align-items-center
-      form(method="post", action="/")
+      form#fetchDataForm(method="post", action="/")
         .d-flex.p-2
           div 
             label(for="uid") UID: 
             input(type="number", id="uid", name="uid", value="800333171")
           button(type="submit", value="enter-uid") Show my Account!
+    script(src="/modules/localStorage.js") 
   //- future feature: add option to add new uid to see another account
 
 

@@ -36,11 +36,18 @@ router.get("/lightcones", async (request, response) => {
 // form processing paths
 router.post('/', async (request, response) => {
   let uid = request.body.uid;
+  // console.log('Headers:', request.headers);
   try {
     const userDashboard = await model.getUserDashboard(uid);
+    // return data in json format when fetching user data (for use later in localStorage)
+    if (request.headers['content-type'] === 'application/json'){
+      return response.json(userDashboard);
+    }
     response.render("index", { title: "User Dashboard", userDashboard });
   } catch(error) {
     console.log("Error:", error)
+    // make a popup when the api itself is down
+    response.status(404).send('Failed to fetch user info: AxiosError: Request failed with status code 404, the API is currently down.')
     response.status(500).send("an error occurred while processing the request")
   }
 });

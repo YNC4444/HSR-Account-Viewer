@@ -1,0 +1,88 @@
+body {
+  background-color: #243356;
+  color: #e0e0e0;
+}
+
+header,
+footer {
+  background-color: #1a1a2e;
+  color: #e0e0e0;
+  padding: 10px;
+}
+
+h2 a {
+  color: #e0e0e0;
+}
+
+a {
+  color: #e0e0e0;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #ffffff;
+}
+
+button {
+  background-color: #1a1a2e;
+  color: #e0e0e0;
+  border: none;
+}
+
+button:hover {
+  background-color: #3a3a5e;
+}
+
+.card {
+  background-color: #1a1a2e;
+  border: 1px solid #3a3a5e;
+}
+
+.card-header,
+.card-footer {
+  background-color: #1a1a2e;
+  color: #e0e0e0;
+}
+
+.card-body {
+  color: #e0e0e0;
+}
+
+.navbar {
+  display: flex;
+  flex-direction: column;
+  background-color: #1a1a2e;
+  color: #e0e0e0;
+  padding: 10px;
+  height: 100%;
+  /* Ensure the navbar takes the full height of the sidebar */
+}
+
+.navbar a {
+  display: block;
+  padding: 10px 0;
+  color: #e0e0e0;
+}
+
+.navbar a:hover {
+  color: #ffffff;
+}
+
+main#main {
+  background-color: #243356;
+  color: #e0e0e0;
+  padding: 20px;
+  flex-grow: 1;
+  /* Ensure the main content takes the remaining space */
+}
+
+.sidebar {
+  background-color: #1a1a2e;
+  color: #e0e0e0;
+  width: 200px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  /* Ensure the sidebar takes the full height of the viewport */
+}

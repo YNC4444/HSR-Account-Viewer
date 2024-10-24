@@ -21,7 +21,8 @@ function fetchAndStore(uid) {
         localStorage.setItem('userData', JSON.stringify(data));
         // log stored data
         console.log('Data stored in local storage: ', localStorage.getItem('userData'));
-        updateUI(data);
+        // updateUI(data);
+        renderProfile(userData);
       } else{
         console.log('No data received');
       }
@@ -38,7 +39,11 @@ function localStoredData(){
       // log loaded data
       console.log('loaded user data from local storage: ', userData);
       if (userData) {
-        updateUI(userData);
+        if (document.getElementById('nickname')){
+          updateUI(userData);
+        } else{
+          console.log('No elements found to update UI');
+        }
       }
     } catch (error){
       console.log('Error parsing stored data: ', error);
@@ -49,19 +54,51 @@ function localStoredData(){
   // const userData = JSON.parse(localStorage.getItem('userData'));
 }
 
+// render profile to the DOM
+function renderProfile(data) {
+  console.log('renderProfile');
+  // Render the profile data to the DOM
+  const profileContainer = document.querySelector('.container');
+  profileContainer.innerHTML = `
+    <h2 id="nickname">Welcome, ${data.player.nickname}!</h2>
+    <img id="avatar" src="${data.player.avatar}" alt="avatar">
+    <p id="signature" class="mb-1">${data.player.signature}</p>
+    <p class="mb-1">Your stats:</p>
+    <ul class="list-unstyled">
+      <li id="level">Level: ${data.player.level}</li>
+      <li id="world_level">World Level: ${data.player.world_level}</li>
+      <li id="friend_count">Friend Count: ${data.player.friend_count}</li>
+      <li id="avatar_count">Number of Characters: ${data.player.space_info.avatar_count}</li>
+      <li id="light_cone_count">Number of Light Cones: ${data.player.space_info.light_cone_count}</li>
+      <li id="achievement_count">Number of Achievements: ${data.player.space_info.achievement_count}</li>
+    </ul>
+  `;
+  // Call updateUI to ensure any additional updates are applied
+  updateUI(data);
+}
+
 // update UI with user data
 // order of the elements needs to match that of the view file
 function updateUI(data){
+
+  console.log('updateUI');
   // profile
   const nickname = document.getElementById('nickname');
-  // console.log(nickname);
   const avatar = document.getElementById('avatar');
   const signature = document.getElementById('signature');
 
+  console.log(nickname);
+  console.log(data.player.nickname);
   // check for elements, prevents TypeError
-  if (nickname) nickname.textContent = data.player.nickname;
+  if (nickname) {
+    nickname.textContent = data.player.nickname;
+    console.log("nickname: ", nickname.textContent);
+  } else{
+    console.log('Element with ID "nickname" not found');
+  }
   if (avatar) avatar.src = data.player.avatar.icon;
   if (signature) signature.textContent = data.player.signature;
+  console.log(signature.textContent);
   // document.getElementById('nickname').textContent = data.player.nickname;
   // document.getElementById('avatar').src = data.player.avatar.icon;
   // document.getElementById('signature').textContent = data.player.signature;
@@ -131,4 +168,4 @@ document.getElementById('fetchDataForm').addEventListener('submit', function(Eve
   fetchAndStore(uid);
 });
 
-document.addEventListener('DOMContentLoaded', localStoredData);
+document.addEventListener('DOMContentLoaded', function () { localStoredData() } );

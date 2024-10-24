@@ -3,9 +3,10 @@ extends common/layout
 block layout-content 
   if userDashboard 
     .container
-      h2 Welcome, #{userDashboard.player.nickname}!
-      img(src=userDashboard.player.avatar.icon alt='avatar')
-      p.mb-1 "#{userDashboard.player.signature}"
+      h2 HELLO!
+      h2(id="nickname") Welcome, #{userDashboard.player.nickname}!
+      img(id="avatar" src=userDashboard.player.avatar.icon alt='avatar')
+      p(id="signature" class="mb-1") "#{userDashboard.player.signature}"
       p.mb-1 Your stats:
       ul.list-unstyled
         li Level: #{userDashboard.player.level}
@@ -40,8 +41,8 @@ block layout-content
     h2.text-center Enter your UID to get started!
     .d-flex.justify-content-center.align-items-center
       form#fetchDataForm(method="post", action="/")
-        .d-flex.p-2
-          div 
+        .d-flex.p-2.flex-gap
+          div.d-flex.p-2.flex-gap
             label(for="uid") UID: 
             input(type="number", id="uid", name="uid", value="800333171")
           button(type="submit", value="enter-uid") Show my Account!

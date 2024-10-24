@@ -2,7 +2,8 @@
 const express = require("express");
 const path = require("path");
 const router = require("./modules/router");
-const model = require("./modules/api");
+const exp = require("constants");
+// const model = require("./modules/api");
 
 // app variables
 const app = express();
@@ -10,6 +11,7 @@ const port = process.env.PORT || 8000;
 
 // use static files from modules folder
 app.use('/modules', express.static(path.join(__dirname, 'modules')));
+app.use('/styles', express.static(path.join(__dirname, 'styles')));
 
 // app config
 app.set("view engine", "pug");

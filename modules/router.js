@@ -39,6 +39,9 @@ router.post('/', async (request, response) => {
   // console.log('Headers:', request.headers);
   try {
     const userDashboard = await model.getUserDashboard(uid);
+    //console.log('---------');
+    //console.log('userDashboard');
+    //console.log(userDashboard);
     // return data in json format when fetching user data (for use later in localStorage)
     if (request.headers['content-type'] === 'application/json'){
       return response.json(userDashboard);

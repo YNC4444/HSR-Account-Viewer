@@ -8,12 +8,12 @@ router.use(express.urlencoded({ extended: true}));
 router.use(express.json());
 
 // route definitions
-router.get("/", (request, response) => {
-  response.render("index", { title: "Home" });
+router.get("/", async (request, response) => {
+  response.render("index", { title: "Home" }); 
 }); // home page before submitting the form
-router.get("/dashboard", async (request, response) => {
-  response.render("dashboard", { title: "Dashboard" });
-});
+// router.get("/dashboard", async (request, response) => {
+//   response.render("dashboard", { title: "Dashboard" });
+// });
 router.get("/characters", async (request, response) => {
   try{
     const characters = await model.listAllCharacters();

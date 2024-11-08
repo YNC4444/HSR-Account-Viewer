@@ -7,7 +7,7 @@ const model = require("./modules/api");
 // app variables
 const app = express();
 const port = process.env.PORT || 8000;
-// testing UIDs: 800333171, 601320110 (my account!)
+// testing UIDs: 800333171
 
 // app config
 app.set("view engine", "pug");

@@ -13,7 +13,7 @@ const port = process.env.PORT || 8000;
 app.set("view engine", "pug");
 
 // set up folder for static files (e.g. CSS, client-side JS, images)
-// app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static("public"));
 
 // use page routes from router
 app.use("/", router);

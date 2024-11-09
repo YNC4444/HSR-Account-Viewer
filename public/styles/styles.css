@@ -1,0 +1,22 @@
+/* Background color */
+.custom-bg-primary {
+  background-color: #243356;
+}
+
+/* Border color */
+.border-primary {
+    border-color: #003eaa;
+}
+
+body, body * {
+    color: #ededf0;
+}
+
+body a {
+  color: #ededf0;
+  text-decoration: none;
+}
+
+input, button {
+  color: #000000;
+}

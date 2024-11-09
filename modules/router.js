@@ -23,10 +23,10 @@ router.get("/characters", async (request, response) => {
     response.status(500).send("Error occurred while processing request")
   }
 });
-router.get("/lightcones", async (request, response) => {
+router.get("/lightCones", async (request, response) => {
   try{
     const lightcones = await model.listAllLightCones();
-    response.render("lightcones", { title: "Light Cones", lightcones });
+    response.render("lightCones", { title: "Light Cones", lightcones });
   } catch(error) {
     console.log("Error:", error)
     response.status(500).send("Error occurred while processing request")
